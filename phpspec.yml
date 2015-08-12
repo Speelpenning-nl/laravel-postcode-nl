@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: Speelpenning\PostcodeNl
+        psr4_prefix: Speelpenning\PostcodeNl
+        src_path: src
