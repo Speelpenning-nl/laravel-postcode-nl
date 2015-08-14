@@ -13,6 +13,12 @@ composer require speelpenning/laravel-postcode-nl
 Next, register an account with Postcode.nl to obtain a key and secret. See https://api.postcode.nl/#register for 
 further information. Once you have a key and secret, store them in your .env file.
 
+Add the following service provider to your application config:
+
+```php
+Speelpenning\PostcodeNl\PostcodeNlServiceProvider::class,
+```
+
 Walk through the configuration section to make things work.
  
 ## Usage
