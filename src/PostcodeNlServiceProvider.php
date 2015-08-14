@@ -1,6 +1,9 @@
 <?php namespace Speelpenning\PostcodeNl;
 
 use Illuminate\Support\ServiceProvider;
+use Speelpenning\PostcodeNl\Http\PostcodeNlClient;
+use Speelpenning\PostcodeNl\Services\AddressLookup;
+use Speelpenning\PostcodeNl\Validators\AddressLookupValidator;
 
 class PostcodeNlServiceProvider extends ServiceProvider {
 
@@ -20,6 +23,10 @@ class PostcodeNlServiceProvider extends ServiceProvider {
     public function register()
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/postcode-nl.php', 'postcode-nl');
+
+        $this->app->singleton(AddressLookup::class, function ($app) {
+            return new AddressLookup($app[AddressLookupValidator::class], $app[PostcodeNlClient::class]);
+        });
     }
 
 }
