@@ -16,9 +16,17 @@
         "illuminate/routing": "5.1.*",
         "illuminate/validation": "5.1.*"
     },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0"
+    },
     "autoload": {
         "psr-4": {
             "Speelpenning\\PostcodeNl\\": "src/"
         }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/TestCase.php"
+        ]
     }
 }
