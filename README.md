@@ -2,7 +2,7 @@
 
 A client using the Postcode.nl REST API for Dutch address verification.
 
-## Usage
+## Installation 
 
 Pull the package in through Composer:
 
@@ -13,7 +13,75 @@ composer require speelpenning/laravel-postcode-nl
 Next, register an account with Postcode.nl to obtain a key and secret. See https://api.postcode.nl/#register for 
 further information. Once you have a key and secret, store them in your .env file.
 
-Walk through the configuration section to make things work. 
+Walk through the configuration section to make things work.
+ 
+## Usage
+
+There are two ways to use the address lookup: by injecting the address lookup service in your code or using the 
+AddressController that is shipped with the package.
+
+### Dependency injection
+
+Example:
+
+```php
+<?php
+
+use Exception;
+use Speelpenning\PostcodeNl\Services\AddressLookup;
+
+class AddressDumper {
+
+    /**
+     * @var AddressLookup
+     */
+    protected $lookup;
+    
+    /**
+     * Create an address dumper instance.
+     *
+     * @param AddressLookup $lookup
+     */
+    public function __construct(AddressLookup $lookup)
+    {
+        $this->lookup = $lookup;
+    }
+    
+    /**
+     * Dumps the address details on screen.
+     *
+     * @param string $postcode
+     * @param int $houseNumber
+     * @param null|string $houseNumberAddition
+     */
+    public function dump($postcode, $houseNumber, $houseNumberAddition = null)
+    {
+        try {
+            $address = $this->lookup->lookup($postcode, $houseNumber, $houseNumberAddition);
+            dd($address);
+        }
+        catch (Exception $e) {
+            exit('Ow, that went wrong...');
+        }
+    }
+
+}
+
+```
+
+### Using the JSON API
+
+In order to use the API, enabled it in the configuration. When enabled, the following route is available:
+                                                                         
+```php
+route('postcode-nl::address', [$postcode, $houseNumber, $houseNumberAddition = null]);
+```
+
+or use the following URL (e.g. for AJAX calls):
+
+```
+/postcode-nl/address/{postcode}/{houseNumber}/{houseNumberAddition?}
+```
 
 ## Configuration
 
@@ -32,18 +100,6 @@ This package comes with a ready to use JSON API, which is disabled by default. Y
 
 ```ini
 POSTCODENL_ENABLE_ROUTES=true
-```
-
-Now you can use the following route:
-
-```php
-route('postcode-nl::address', [$postcode, $houseNumber, $houseNumberAddition = null]);
-```
-
-which gives you the following URL:
-
-```
-/postcode-nl/address/{postcode}/{houseNumber}/{houseNumberAddition?}
 ```
 
 ### Timeout (in seconds, optional)
