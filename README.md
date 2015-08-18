@@ -1,5 +1,10 @@
 # Postcode.nl client for Laravel 5.1
 
+[![Build Status](https://travis-ci.org/Speelpenning-nl/laravel-postcode-nl.svg)](https://travis-ci.org/Speelpenning-nl/laravel-postcode-nl)
+[![Latest Stable Version](https://poser.pugx.org/speelpenning/laravel-postcode-nl/v/stable)](https://packagist.org/packages/speelpenning/laravel-postcode-nl)
+[![Latest Unstable Version](https://poser.pugx.org/speelpenning/laravel-postcode-nl/v/unstable)](https://packagist.org/packages/speelpenning/laravel-postcode-nl)
+[![License](https://poser.pugx.org/speelpenning/laravel-postcode-nl/license)](https://packagist.org/packages/speelpenning/laravel-postcode-nl)
+
 A client using the Postcode.nl REST API for Dutch address verification.
 
 ## Installation 
