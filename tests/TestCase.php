@@ -3,8 +3,8 @@
 use Illuminate\Foundation\Testing\TestCase as LaravelTestCase;
 use Speelpenning\PostcodeNl\PostcodeNlServiceProvider;
 
-abstract class TestCase extends LaravelTestCase {
-
+abstract class TestCase extends LaravelTestCase
+{
     /**
      * The base URL to use while testing the application.
      *
@@ -27,5 +27,4 @@ abstract class TestCase extends LaravelTestCase {
 
         return $app;
     }
-
 }

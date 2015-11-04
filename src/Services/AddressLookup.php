@@ -1,11 +1,13 @@
-<?php namespace Speelpenning\PostcodeNl\Services;
+<?php
+
+namespace Speelpenning\PostcodeNl\Services;
 
 use Speelpenning\PostcodeNl\Address;
 use Speelpenning\PostcodeNl\Http\PostcodeNlClient;
 use Speelpenning\PostcodeNl\Validators\AddressLookupValidator;
 
-class AddressLookup {
-
+class AddressLookup
+{
     /**
      * @var AddressLookupValidator
      */
@@ -58,5 +60,4 @@ class AddressLookup {
     {
         return "https://api.postcode.nl/rest/addresses/$postcode/$houseNumber/$houseNumberAddition";
     }
-
 }

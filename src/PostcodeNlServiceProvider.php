@@ -1,12 +1,14 @@
-<?php namespace Speelpenning\PostcodeNl;
+<?php
+
+namespace Speelpenning\PostcodeNl;
 
 use Illuminate\Support\ServiceProvider;
 use Speelpenning\PostcodeNl\Http\PostcodeNlClient;
 use Speelpenning\PostcodeNl\Services\AddressLookup;
 use Speelpenning\PostcodeNl\Validators\AddressLookupValidator;
 
-class PostcodeNlServiceProvider extends ServiceProvider {
-
+class PostcodeNlServiceProvider extends ServiceProvider
+{
     /**
      * Bootstrap the application services.
      */
@@ -28,5 +30,4 @@ class PostcodeNlServiceProvider extends ServiceProvider {
             return new AddressLookup($app[AddressLookupValidator::class], $app[PostcodeNlClient::class]);
         });
     }
-
 }

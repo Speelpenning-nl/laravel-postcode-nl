@@ -1,4 +1,6 @@
-<?php namespace Speelpenning\PostcodeNl\Http;
+<?php
+
+namespace Speelpenning\PostcodeNl\Http;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
@@ -7,8 +9,8 @@ use Psr\Http\Message\ResponseInterface;
 use Speelpenning\PostcodeNl\Exceptions\AddressNotFound;
 use Speelpenning\PostcodeNl\Exceptions\Unauthorized;
 
-class PostcodeNlClient {
-
+class PostcodeNlClient
+{
     /**
      * @var Repository
      */
@@ -41,8 +43,7 @@ class PostcodeNlClient {
     {
         try {
             return $this->client->get($uri, $this->getRequestOptions());
-        }
-        catch (ClientException $e) {
+        } catch (ClientException $e) {
             $this->handleClientException($e);
         }
     }
@@ -73,5 +74,4 @@ class PostcodeNlClient {
                 throw new AddressNotFound();
         }
     }
-
 }

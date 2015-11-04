@@ -2,8 +2,8 @@
 
 use Speelpenning\PostcodeNl\Address;
 
-class AddressTest extends TestCase {
-
+class AddressTest extends TestCase
+{
     public function testAttributesCanBeAccessed()
     {
         $address = new Address([
@@ -35,5 +35,4 @@ class AddressTest extends TestCase {
         $address = new Address($attributes);
         $this->assertJsonStringEqualsJsonString(json_encode($attributes), $address->toJson());
     }
-
 }

@@ -1,7 +1,7 @@
 <?php
 
-class AddressControllerTest extends TestCase {
-
+class AddressControllerTest extends TestCase
+{
     public function setUp()
     {
         parent::setUp();

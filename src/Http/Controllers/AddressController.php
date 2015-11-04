@@ -1,4 +1,6 @@
-<?php namespace Speelpenning\PostcodeNl\Http\Controllers;
+<?php
+
+namespace Speelpenning\PostcodeNl\Http\Controllers;
 
 use Illuminate\Contracts\Validation\ValidationException;
 use Illuminate\Routing\Controller;
@@ -6,8 +8,8 @@ use Speelpenning\PostcodeNl\Exceptions\AddressNotFound;
 use Speelpenning\PostcodeNl\Exceptions\Unauthorized;
 use Speelpenning\PostcodeNl\Services\AddressLookup;
 
-class AddressController extends Controller {
-
+class AddressController extends Controller
+{
     /**
      * @var AddressLookup
      */
@@ -36,16 +38,12 @@ class AddressController extends Controller {
         try {
             $address = $this->lookup->lookup(str_replace(' ', '', $postcode), $houseNumber, $houseNumberAddition);
             return response()->json($address);
-        }
-        catch (ValidationException $e) {
+        } catch (ValidationException $e) {
             abort(400, 'Bad Request');
-        }
-        catch (Unauthorized $e) {
+        } catch (Unauthorized $e) {
             abort(401, 'Unauthorized');
-        }
-        catch (AddressNotFound $e) {
+        } catch (AddressNotFound $e) {
             abort(404, 'Not Found');
         }
     }
-
 }

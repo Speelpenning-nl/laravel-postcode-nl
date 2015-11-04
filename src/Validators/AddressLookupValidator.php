@@ -1,10 +1,12 @@
-<?php namespace Speelpenning\PostcodeNl\Validators;
+<?php
+
+namespace Speelpenning\PostcodeNl\Validators;
 
 use Illuminate\Contracts\Validation\ValidationException;
 use Illuminate\Validation\Factory;
 
-class AddressLookupValidator {
-
+class AddressLookupValidator
+{
     /**
      * @var Factory
      */
@@ -40,5 +42,4 @@ class AddressLookupValidator {
             throw new ValidationException($validation->errors());
         }
     }
-
 }

@@ -1,4 +1,6 @@
-<?php namespace Speelpenning\PostcodeNl;
+<?php
+
+namespace Speelpenning\PostcodeNl;
 
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
@@ -11,8 +13,8 @@ use Illuminate\Contracts\Support\Jsonable;
  *
  * @package Speelpenning\PostcodeNl
  */
-class Address implements Arrayable, Jsonable {
-
+class Address implements Arrayable, Jsonable
+{
     /**
      * @var array
      */
@@ -57,5 +59,4 @@ class Address implements Arrayable, Jsonable {
     {
         return json_encode($this->toArray(), $options);
     }
-
 }
