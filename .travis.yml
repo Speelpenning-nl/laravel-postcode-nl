@@ -6,7 +6,7 @@ php:
   - hhvm
 
 before_script:
-  - composer require --dev "laravel/laravel=5.2.x"
+  - composer require --dev "laravel/laravel=5.3.x"
   - composer install --dev --prefer-source --no-interaction
 
 script: vendor/bin/phpunit --coverage-clover=coverage.xml
