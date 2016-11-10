@@ -40,7 +40,7 @@ class AddressLookup
      */
     public function lookup($postcode, $houseNumber, $houseNumberAddition = null)
     {
-        $this->validator->validate(compact(['postcode', 'houseNumber', 'houseNumberAddition']));
+        $this->validator->validate(array_filter(compact('postcode', 'houseNumber', 'houseNumberAddition')));
 
         $uri = $this->getUri($postcode, $houseNumber, $houseNumberAddition);
         $response = $this->client->get($uri);

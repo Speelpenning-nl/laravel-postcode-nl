@@ -2,8 +2,8 @@
 
 namespace Speelpenning\PostcodeNl\Validators;
 
-use Illuminate\Contracts\Validation\ValidationException;
 use Illuminate\Validation\Factory;
+use Illuminate\Validation\ValidationException;
 
 class AddressLookupValidator
 {
@@ -15,7 +15,7 @@ class AddressLookupValidator
     protected $rules = [
         'postcode' => ['required', 'regex:/^[1-9]{1}[0-9]{3}[A-Z]{2}$/'],
         'houseNumber' => ['required', 'integer', 'between:0,99999'],
-        'houseNumberAddition' => ['string']
+        'houseNumberAddition' => ['sometimes', 'string']
     ];
 
     /**

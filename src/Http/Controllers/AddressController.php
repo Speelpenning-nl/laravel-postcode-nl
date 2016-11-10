@@ -2,7 +2,7 @@
 
 namespace Speelpenning\PostcodeNl\Http\Controllers;
 
-use Illuminate\Contracts\Validation\ValidationException;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Routing\Controller;
 use Speelpenning\PostcodeNl\Exceptions\AddressNotFound;
 use Speelpenning\PostcodeNl\Exceptions\Unauthorized;

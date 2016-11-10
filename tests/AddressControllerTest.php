@@ -26,11 +26,11 @@ class AddressControllerTest extends TestCase
     public function testExistingAddressReturnsAnAddress()
     {
         $this->get(route('postcode-nl::address', ['1000AA', 1]))
+            ->assertResponseOk()
             ->seeJson([
                 'postcode' => '1000AA',
                 'houseNumber' => 1,
-            ])
-            ->assertResponseOk();
+            ]);
     }
 
     public function testNonExistingAddressThrowsAddressNotFound()

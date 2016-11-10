@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Contracts\Validation\ValidationException;
+use Illuminate\Validation\ValidationException;
 use Speelpenning\PostcodeNl\Exceptions\AddressNotFound;
 use Speelpenning\PostcodeNl\Exceptions\Unauthorized;
 use Speelpenning\PostcodeNl\Services\AddressLookup;
@@ -17,7 +17,7 @@ class AddressLookupTest extends TestCase
 
     public function testInvalidCredentialsThrowUnauthorized()
     {
-        $this->setExpectedException(Unauthorized::class);
+        $this->expectException(Unauthorized::class);
 
         config([
             'postcode-nl.requestOptions.auth' => [
@@ -39,7 +39,7 @@ class AddressLookupTest extends TestCase
 
     public function testNonExistingAddressThrowsAddressNotFound()
     {
-        $this->setExpectedException(AddressNotFound::class);
+        $this->expectException(AddressNotFound::class);
 
         $lookup = app(AddressLookup::class);
         $lookup->lookup('9999ZZ', 99999);
@@ -47,7 +47,7 @@ class AddressLookupTest extends TestCase
 
     public function testInvalidLookupThrowsValidationException()
     {
-        $this->setExpectedException(ValidationException::class);
+        $this->expectException(ValidationException::class);
 
         $lookup = app(AddressLookup::class);
         $lookup->lookup('invalid', 'address');
