@@ -4,7 +4,7 @@ php:
   - 7.0
 
 before_script:
-  - composer require --dev "laravel/laravel=5.3.x"
+  - composer require --dev "laravel/laravel=5.4.x"
   - composer install --dev --prefer-source --no-interaction
 
 script: vendor/bin/phpunit --coverage-clover=coverage.xml
