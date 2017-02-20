@@ -1,4 +1,4 @@
-# Postcode.nl client for Laravel 5.3
+# Postcode.nl client for Laravel 5.4
 
 [![Build Status](https://travis-ci.org/Speelpenning-nl/laravel-postcode-nl.svg)](https://travis-ci.org/Speelpenning-nl/laravel-postcode-nl)
 [![codecov.io](http://codecov.io/github/Speelpenning-nl/laravel-postcode-nl/coverage.svg?branch=master)](http://codecov.io/github/Speelpenning-nl/laravel-postcode-nl?branch=master)
@@ -10,7 +10,9 @@ A client using the Postcode.nl REST API for Dutch address verification.
 
 ## Installation 
 
-> For Laravel 5.1 or 5.2, please use the 1.0 branch.
+> For Laravel 5.3, please use the 2.0 branch.
+ 
+> For Laravel 5.1 or 5.2, use the 1.0 branch.
 
 Pull the package in through Composer:
 
