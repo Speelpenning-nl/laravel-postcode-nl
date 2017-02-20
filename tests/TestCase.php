@@ -19,6 +19,8 @@ abstract class TestCase extends LaravelTestCase
      */
     public function createApplication()
     {
+        $this->loadDotEnvConfig();
+
         $app = require __DIR__.'/../vendor/laravel/laravel/bootstrap/app.php';
 
         $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
@@ -26,5 +28,12 @@ abstract class TestCase extends LaravelTestCase
         $app->register(PostcodeNlServiceProvider::class);
 
         return $app;
+    }
+
+    protected function loadDotEnvConfig()
+    {
+        if (file_exists(__DIR__.'/../.env')) {
+            (new \Dotenv\Dotenv(__DIR__.'/..'))->load();
+        }
     }
 }

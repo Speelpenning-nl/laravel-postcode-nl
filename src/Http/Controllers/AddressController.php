@@ -4,6 +4,7 @@ namespace Speelpenning\PostcodeNl\Http\Controllers;
 
 use Illuminate\Validation\ValidationException;
 use Illuminate\Routing\Controller;
+use Speelpenning\PostcodeNl\Exceptions\AccountSuspended;
 use Speelpenning\PostcodeNl\Exceptions\AddressNotFound;
 use Speelpenning\PostcodeNl\Exceptions\Unauthorized;
 use Speelpenning\PostcodeNl\Services\AddressLookup;
@@ -42,6 +43,8 @@ class AddressController extends Controller
             abort(400, 'Bad Request');
         } catch (Unauthorized $e) {
             abort(401, 'Unauthorized');
+        } catch (AccountSuspended $e) {
+            abort(403, 'Account suspended');
         } catch (AddressNotFound $e) {
             abort(404, 'Not Found');
         }
