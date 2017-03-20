@@ -14,6 +14,10 @@ class PostcodeNlServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->publishes([
+            $this->getPathToConfigFile() => config_path('postcode-nl.php')
+        ], 'config');
+
         if (array_get($this->app['config'], 'postcode-nl.enableRoutes', false) and ! $this->app->routesAreCached()) {
             require __DIR__ . '/Http/routes.php';
         }
@@ -24,10 +28,15 @@ class PostcodeNlServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/postcode-nl.php', 'postcode-nl');
+        $this->mergeConfigFrom($this->getPathToConfigFile(), 'postcode-nl');
 
         $this->app->singleton(AddressLookup::class, function ($app) {
             return new AddressLookup($app[AddressLookupValidator::class], $app[PostcodeNlClient::class]);
         });
+    }
+
+    protected function getPathToConfigFile()
+    {
+        return __DIR__ . '/../config/postcode-nl.php';
     }
 }
