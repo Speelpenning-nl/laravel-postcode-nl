@@ -39,7 +39,7 @@ class AddressLookupValidator
         $validation = $this->validator->make($data, $this->rules);
 
         if ($validation->fails()) {
-			throw new ValidationException($validation->errors(),new JsonResponse($validation->errors(), 422));
+			throw new ValidationException($validation,new JsonResponse($validation->errors(), 422));
         }
     }
 }
