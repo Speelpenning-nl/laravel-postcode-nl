@@ -2,6 +2,7 @@
 
 namespace Speelpenning\PostcodeNl\Validators;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Validation\Factory;
 use Illuminate\Validation\ValidationException;
 
@@ -39,7 +40,7 @@ class AddressLookupValidator
         $validation = $this->validator->make($data, $this->rules);
 
         if ($validation->fails()) {
-            throw new ValidationException($validation->errors());
+            throw new ValidationException($validation, new JsonResponse($validation->errors()));
         }
     }
 }
