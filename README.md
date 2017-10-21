@@ -1,4 +1,4 @@
-# Postcode.nl client for Laravel 5.4
+# Postcode.nl client for Laravel 5.5
 
 [![Build Status](https://travis-ci.org/Speelpenning-nl/laravel-postcode-nl.svg)](https://travis-ci.org/Speelpenning-nl/laravel-postcode-nl)
 [![codecov.io](http://codecov.io/github/Speelpenning-nl/laravel-postcode-nl/coverage.svg?branch=master)](http://codecov.io/github/Speelpenning-nl/laravel-postcode-nl?branch=master)
@@ -8,10 +8,10 @@
 
 A client using the Postcode.nl REST API for Dutch address verification.
 
-## Installation 
+## Installation
 
 > For Laravel 5.3, please use the 2.0 branch.
- 
+
 > For Laravel 5.1 or 5.2, use the 1.0 branch.
 
 Pull the package in through Composer:
@@ -20,20 +20,14 @@ Pull the package in through Composer:
 composer require speelpenning/laravel-postcode-nl
 ```
 
-Next, register an account with Postcode.nl to obtain a key and secret. See https://api.postcode.nl/#register for 
+Next, register an account with Postcode.nl to obtain a key and secret. See https://api.postcode.nl/#register for
 further information. Once you have a key and secret, store them in your .env file.
 
-Add the following service provider to your application config:
-
-```php
-Speelpenning\PostcodeNl\PostcodeNlServiceProvider::class,
-```
-
 Walk through the configuration section to make things work.
- 
+
 ## Usage
 
-There are two ways to use the address lookup: by injecting the address lookup service in your code or using the 
+There are two ways to use the address lookup: by injecting the address lookup service in your code or using the
 AddressController that is shipped with the package.
 
 ### Dependency injection
@@ -52,7 +46,7 @@ class AddressDumper {
      * @var AddressLookup
      */
     protected $lookup;
-    
+
     /**
      * Create an address dumper instance.
      *
@@ -62,7 +56,7 @@ class AddressDumper {
     {
         $this->lookup = $lookup;
     }
-    
+
     /**
      * Dumps the address details on screen.
      *
@@ -88,7 +82,7 @@ class AddressDumper {
 ### Using the JSON API
 
 In order to use the API, enabled it in the configuration. When enabled, the following route is available:
-                                                                         
+
 ```php
 route('postcode-nl::address', [$postcode, $houseNumber, $houseNumberAddition = null]);
 ```
@@ -103,7 +97,7 @@ or use the following URL (e.g. for AJAX calls):
 
 ### Credentials (required)
 
-The key and secret are used for authentication. Without them, you cannot use the service. 
+The key and secret are used for authentication. Without them, you cannot use the service.
 
 ```ini
 POSTCODENL_KEY=<your-api-key>
@@ -112,7 +106,7 @@ POSTCODENL_SECRET=<your-secret>
 
 ### Enable routes (optional)
 
-This package comes with a ready to use JSON API, which is disabled by default. You can enable it like so:  
+This package comes with a ready to use JSON API, which is disabled by default. You can enable it like so:
 
 ```ini
 POSTCODENL_ENABLE_ROUTES=true
