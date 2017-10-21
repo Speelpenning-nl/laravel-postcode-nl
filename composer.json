@@ -11,14 +11,14 @@
     "require": {
         "php": ">=5.6.4",
         "guzzlehttp/guzzle": "~6.0",
-        "illuminate/config": "5.4.*",
-        "illuminate/contracts": "5.4.*",
-        "illuminate/routing": "5.4.*",
-        "illuminate/support": "5.4.*",
-        "illuminate/validation": "5.4.*"
+        "illuminate/config": "5.5.*",
+        "illuminate/contracts": "5.5.*",
+        "illuminate/routing": "5.5.*",
+        "illuminate/support": "5.5.*",
+        "illuminate/validation": "5.5.*"
     },
     "require-dev": {
-        "laravel/laravel": "5.4.*",
+        "laravel/laravel": "5.5.*",
         "phpunit/phpunit": "~5.0"
     },
     "autoload": {
@@ -30,5 +30,12 @@
         "classmap": [
             "tests/TestCase.php"
         ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Speelpenning\\PostcodeNl\\PostcodeNlServiceProvider"
+            ]
+        }
     }
 }
