@@ -2,7 +2,11 @@
 
 namespace Speelpenning\PostcodeNl\Services;
 
+use Illuminate\Validation\ValidationException;
 use Speelpenning\PostcodeNl\Address;
+use Speelpenning\PostcodeNl\Exceptions\AccountSuspended;
+use Speelpenning\PostcodeNl\Exceptions\AddressNotFound;
+use Speelpenning\PostcodeNl\Exceptions\Unauthorized;
 use Speelpenning\PostcodeNl\Http\PostcodeNlClient;
 use Speelpenning\PostcodeNl\Validators\AddressLookupValidator;
 
@@ -37,6 +41,10 @@ class AddressLookup
      * @param int $houseNumber
      * @param null|string $houseNumberAddition
      * @return Address
+     * @throws ValidationException
+     * @throws AccountSuspended
+     * @throws AddressNotFound
+     * @throws Unauthorized
      */
     public function lookup($postcode, $houseNumber, $houseNumberAddition = null)
     {

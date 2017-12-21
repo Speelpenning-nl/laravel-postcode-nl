@@ -39,6 +39,9 @@ class PostcodeNlClient
      *
      * @param string $uri
      * @return ResponseInterface
+     * @throws AccountSuspended
+     * @throws AddressNotFound
+     * @throws Unauthorized
      */
     public function get($uri)
     {
@@ -76,6 +79,8 @@ class PostcodeNlClient
                 throw new AccountSuspended();
             case 404:
                 throw new AddressNotFound();
+            default:
+                throw $e;
         }
     }
 }

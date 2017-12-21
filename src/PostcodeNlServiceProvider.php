@@ -2,11 +2,17 @@
 
 namespace Speelpenning\PostcodeNl;
 
+use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use Speelpenning\PostcodeNl\Http\PostcodeNlClient;
 use Speelpenning\PostcodeNl\Services\AddressLookup;
 use Speelpenning\PostcodeNl\Validators\AddressLookupValidator;
 
+/**
+ * Class PostcodeNlServiceProvider
+ *
+ * @property Application $app
+ */
 class PostcodeNlServiceProvider extends ServiceProvider
 {
     /**

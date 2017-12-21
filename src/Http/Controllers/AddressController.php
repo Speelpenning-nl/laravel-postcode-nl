@@ -2,6 +2,7 @@
 
 namespace Speelpenning\PostcodeNl\Http\Controllers;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Routing\Controller;
 use Speelpenning\PostcodeNl\Exceptions\AccountSuspended;
@@ -32,7 +33,7 @@ class AddressController extends Controller
      * @param string $postcode
      * @param int $houseNumber
      * @param null|string $houseNumberAddition
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function get($postcode, $houseNumber, $houseNumberAddition = null)
     {
