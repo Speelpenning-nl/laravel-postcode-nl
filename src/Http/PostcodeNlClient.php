@@ -43,7 +43,7 @@ class PostcodeNlClient
      * @throws AddressNotFound
      * @throws Unauthorized
      */
-    public function get($uri)
+    public function get(string $uri): ResponseInterface
     {
         try {
             return $this->client->get($uri, $this->getRequestOptions());
@@ -57,7 +57,7 @@ class PostcodeNlClient
      *
      * @return array
      */
-    protected function getRequestOptions()
+    protected function getRequestOptions(): array
     {
         return $this->config->get('postcode-nl.requestOptions');
     }

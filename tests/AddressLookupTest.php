@@ -65,6 +65,6 @@ class AddressLookupTest extends TestCase
         $this->expectException(ValidationException::class);
 
         $lookup = app(AddressLookup::class);
-        $lookup->lookup('invalid', 'address');
+        $lookup->lookup('invalid', 12345);
     }
 }

@@ -41,7 +41,12 @@ class PostcodeNlServiceProvider extends ServiceProvider
         });
     }
 
-    protected function getPathToConfigFile()
+    /**
+     * Composes the path to the config file.
+     *
+     * @return string
+     */
+    protected function getPathToConfigFile(): string
     {
         return __DIR__ . '/../config/postcode-nl.php';
     }

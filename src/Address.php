@@ -31,6 +31,8 @@ class Address implements Arrayable, Jsonable
     }
 
     /**
+     * Retrieve a property of the address.
+     *
      * @param string $key
      * @return mixed
      */
@@ -44,7 +46,7 @@ class Address implements Arrayable, Jsonable
      *
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         return $this->attributes;
     }
@@ -52,10 +54,10 @@ class Address implements Arrayable, Jsonable
     /**
      * Convert the object to its JSON representation.
      *
-     * @param  int $options
+     * @param int $options
      * @return string
      */
-    public function toJson($options = 0)
+    public function toJson($options = 0): string
     {
         return json_encode($this->toArray(), $options);
     }

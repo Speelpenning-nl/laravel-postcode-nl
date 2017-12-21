@@ -13,6 +13,9 @@ class AddressLookupValidator
      */
     protected $validator;
 
+    /**
+     * @var array
+     */
     protected $rules = [
         'postcode' => ['required', 'regex:/^[1-9]{1}[0-9]{3}[A-Z]{2}$/'],
         'houseNumber' => ['required', 'integer', 'between:0,99999'],

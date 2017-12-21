@@ -31,14 +31,14 @@ class AddressController extends Controller
      * Performs a Dutch address lookup and returns a JSON response.
      *
      * @param string $postcode
-     * @param int $houseNumber
+     * @param int|string $houseNumber
      * @param null|string $houseNumberAddition
      * @return JsonResponse
      */
-    public function get($postcode, $houseNumber, $houseNumberAddition = null)
+    public function get(string $postcode, string $houseNumber, string $houseNumberAddition = null): JsonResponse
     {
         try {
-            $address = $this->lookup->lookup(str_replace(' ', '', $postcode), $houseNumber, $houseNumberAddition);
+            $address = $this->lookup->lookup(str_replace(' ', '', $postcode), (int)$houseNumber, $houseNumberAddition);
             return response()->json($address);
         } catch (ValidationException $e) {
             abort(400, 'Bad Request');

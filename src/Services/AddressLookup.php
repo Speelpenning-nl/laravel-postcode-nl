@@ -46,7 +46,7 @@ class AddressLookup
      * @throws AddressNotFound
      * @throws Unauthorized
      */
-    public function lookup($postcode, $houseNumber, $houseNumberAddition = null)
+    public function lookup(string $postcode, int $houseNumber, string $houseNumberAddition = null): Address
     {
         $this->validator->validate(array_filter(compact('postcode', 'houseNumber', 'houseNumberAddition')));
 
@@ -64,7 +64,7 @@ class AddressLookup
      * @param null|string $houseNumberAddition
      * @return string
      */
-    public function getUri($postcode, $houseNumber, $houseNumberAddition = null)
+    public function getUri(string $postcode, int $houseNumber, string $houseNumberAddition = null): string
     {
         return "https://api.postcode.nl/rest/addresses/$postcode/$houseNumber/$houseNumberAddition";
     }
