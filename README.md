@@ -10,10 +10,6 @@ A client using the Postcode.nl REST API for Dutch address verification.
 
 ## Installation 
 
-> For Laravel 5.3, please use the 2.0 branch.
- 
-> For Laravel 5.1 or 5.2, use the 1.0 branch.
-
 Pull the package in through Composer:
 
 ```bash
