@@ -70,7 +70,7 @@ class PostcodeNlClient
      * @throws AccountSuspended
      * @throws AddressNotFound
      */
-    protected function handleClientException(ClientException $e)
+    protected function handleClientException(ClientException $e): void
     {
         switch ($e->getCode()) {
             case 401:

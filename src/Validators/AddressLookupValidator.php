@@ -38,7 +38,7 @@ class AddressLookupValidator
      * @param array $data
      * @throws ValidationException
      */
-    public function validate(array $data = [])
+    public function validate(array $data = []): void
     {
         $validation = $this->validator->make($data, $this->rules);
 
