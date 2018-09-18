@@ -1,0 +1,30 @@
+version: '3'
+services:
+
+  composer:
+    image: composer:latest
+    volumes:
+      - .:/var/www
+    working_dir: /var/www
+    command: install
+
+  php-7.1:
+    image: php:7.1-cli
+    volumes:
+      - .:/var/www
+    working_dir: /var/www
+    command: vendor/bin/phpunit
+
+  php-7.2:
+    image: php:7.2-cli
+    volumes:
+      - .:/var/www
+    working_dir: /var/www
+    command: vendor/bin/phpunit
+
+  php-7.3:
+    image: php:7.3-rc-cli
+    volumes:
+      - .:/var/www
+    working_dir: /var/www
+    command: vendor/bin/phpunit
