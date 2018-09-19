@@ -1,4 +1,4 @@
-# Postcode.nl client for Laravel 5.6
+# Postcode.nl client for Laravel 5.7
 
 [![Build Status](https://travis-ci.org/Speelpenning-nl/laravel-postcode-nl.svg)](https://travis-ci.org/Speelpenning-nl/laravel-postcode-nl)
 [![codecov](https://codecov.io/gh/Speelpenning-nl/laravel-postcode-nl/branch/master/graph/badge.svg)](https://codecov.io/gh/Speelpenning-nl/laravel-postcode-nl)
