@@ -25,6 +25,7 @@ class AddressTest extends TestCase
         $address = new Address($attributes);
         self::assertEquals($attributes, $address->toArray());
     }
+
     public function testAddressCanBeConvertedToJson(): void
     {
         $attributes = [
@@ -33,6 +34,6 @@ class AddressTest extends TestCase
         ];
 
         $address = new Address($attributes);
-        self::assertJsonStringEqualsJsonString(json_encode($attributes), $address->toJson());
+        self::assertJsonStringEqualsJsonString(json_encode($attributes, JSON_THROW_ON_ERROR), $address->toJson());
     }
 }

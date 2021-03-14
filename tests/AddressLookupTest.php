@@ -28,7 +28,7 @@ class AddressLookupTest extends TestCase
 
         $client = $this->getMockBuilder(Client::class)
             ->disableOriginalConstructor()
-            ->setMethods(['get'])
+            ->onlyMethods(['get'])
             ->getMock();
         $client->expects(self::once())
             ->method('get')
@@ -44,7 +44,7 @@ class AddressLookupTest extends TestCase
 
         $client = $this->getMockBuilder(Client::class)
             ->disableOriginalConstructor()
-            ->setMethods(['get'])
+            ->onlyMethods(['get'])
             ->getMock();
         $client->expects(self::once())
             ->method('get')
@@ -58,7 +58,7 @@ class AddressLookupTest extends TestCase
     {
         $client = $this->getMockBuilder(Client::class)
             ->disableOriginalConstructor()
-            ->setMethods(['get'])
+            ->onlyMethods(['get'])
             ->getMock();
         $client->expects(self::once())
             ->method('get')
@@ -76,7 +76,7 @@ class AddressLookupTest extends TestCase
 
         $client = $this->getMockBuilder(Client::class)
             ->disableOriginalConstructor()
-            ->setMethods(['get'])
+            ->onlyMethods(['get'])
             ->getMock();
         $client->expects(self::once())
             ->method('get')

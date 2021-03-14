@@ -14,7 +14,7 @@ class AddressControllerTest extends TestCase
     {
         $service = $this->getMockBuilder(AddressLookup::class)
             ->disableOriginalConstructor()
-            ->setMethods(['lookup'])
+            ->onlyMethods(['lookup'])
             ->getMock();
         $service->expects(self::once())
             ->method('lookup')
@@ -29,7 +29,7 @@ class AddressControllerTest extends TestCase
     {
         $service = $this->getMockBuilder(AddressLookup::class)
             ->disableOriginalConstructor()
-            ->setMethods(['lookup'])
+            ->onlyMethods(['lookup'])
             ->getMock();
         $service->expects(self::once())
             ->method('lookup')
@@ -44,7 +44,7 @@ class AddressControllerTest extends TestCase
     {
         $service = $this->getMockBuilder(AddressLookup::class)
             ->disableOriginalConstructor()
-            ->setMethods(['lookup'])
+            ->onlyMethods(['lookup'])
             ->getMock();
         $service->expects(self::once())
             ->method('lookup')
@@ -66,7 +66,7 @@ class AddressControllerTest extends TestCase
     {
         $service = $this->getMockBuilder(AddressLookup::class)
             ->disableOriginalConstructor()
-            ->setMethods(['lookup'])
+            ->onlyMethods(['lookup'])
             ->getMock();
         $service->expects(self::once())
             ->method('lookup')
@@ -81,7 +81,7 @@ class AddressControllerTest extends TestCase
     {
         $service = $this->getMockBuilder(AddressLookup::class)
             ->disableOriginalConstructor()
-            ->setMethods(['lookup'])
+            ->onlyMethods(['lookup'])
             ->getMock();
         $service->expects(self::once())
             ->method('lookup')
