@@ -1,10 +1,11 @@
 language: php
 php:
-  - 7.1
   - 7.2
+  - 7.3
+  - 7.4
 
 before_script:
-  - composer require --dev "laravel/laravel=5.7.x"
+  - composer require --dev "laravel/laravel=5.8.x"
   - composer install --dev --prefer-source --no-interaction
 
 script: vendor/bin/phpunit --coverage-clover=coverage.xml
