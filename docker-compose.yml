@@ -27,3 +27,10 @@ services:
       - .:/var/www
     working_dir: /var/www
     command: vendor/bin/phpunit
+
+  php-8.0:
+    image: php:8.0-cli-alpine
+    volumes:
+      - .:/var/www
+    working_dir: /var/www
+    command: vendor/bin/phpunit
