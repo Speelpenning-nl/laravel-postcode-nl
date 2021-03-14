@@ -1,39 +1,44 @@
 <?php
 
+use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Testing\TestCase as LaravelTestCase;
 use Speelpenning\PostcodeNl\PostcodeNlServiceProvider;
 
 abstract class TestCase extends LaravelTestCase
 {
-    /**
-     * The base URL to use while testing the application.
-     *
-     * @var string
-     */
-    protected $baseUrl = 'http://localhost';
+    protected function tearDown(): void
+    {
+        app()->flush();
+
+        parent::tearDown();
+    }
 
     /**
      * Creates the application.
      *
-     * @return \Illuminate\Foundation\Application
+     * @return Application
      */
-    public function createApplication()
+    public function createApplication(): Application
     {
-        $this->loadDotEnvConfig();
-
         $app = require __DIR__.'/../vendor/laravel/laravel/bootstrap/app.php';
 
         $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
 
+        $this->configure();
         $app->register(PostcodeNlServiceProvider::class);
 
         return $app;
     }
 
-    protected function loadDotEnvConfig()
+    private function configure(): void
     {
-        if (file_exists(__DIR__.'/../.env')) {
-            (new \Dotenv\Dotenv(__DIR__.'/..'))->load();
-        }
+        config([
+            'postcode-nl' => [
+                'requestOptions' => [
+                    'auth' => ['key', 'secret'],
+                ],
+                'enableRoutes' => true,
+            ],
+        ]);
     }
 }

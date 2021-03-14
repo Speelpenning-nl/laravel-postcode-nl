@@ -4,18 +4,18 @@ use Speelpenning\PostcodeNl\Address;
 
 class AddressTest extends TestCase
 {
-    public function testAttributesCanBeAccessed()
+    public function testAttributesCanBeAccessed(): void
     {
         $address = new Address([
             'postcode' => '1000AA',
             'houseNumber' => 1
         ]);
 
-        $this->assertEquals('1000AA', $address->postcode);
-        $this->assertEquals(1, $address->houseNumber);
+        self::assertEquals('1000AA', $address->postcode);
+        self::assertEquals(1, $address->houseNumber);
     }
 
-    public function testAddressCanBeConvertedToArray()
+    public function testAddressCanBeConvertedToArray(): void
     {
         $attributes = [
             'postcode' => '1000AA',
@@ -23,9 +23,9 @@ class AddressTest extends TestCase
         ];
 
         $address = new Address($attributes);
-        $this->assertArraySubset($attributes, $address->toArray());
+        self::assertArraySubset($attributes, $address->toArray());
     }
-    public function testAddressCanBeConvertedToJson()
+    public function testAddressCanBeConvertedToJson(): void
     {
         $attributes = [
             'postcode' => '1000AA',
@@ -33,6 +33,6 @@ class AddressTest extends TestCase
         ];
 
         $address = new Address($attributes);
-        $this->assertJsonStringEqualsJsonString(json_encode($attributes), $address->toJson());
+        self::assertJsonStringEqualsJsonString(json_encode($attributes), $address->toJson());
     }
 }

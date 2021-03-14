@@ -1,0 +1,26 @@
+{
+  "street": "Julianastraat",
+  "streetNen": "Julianastraat",
+  "houseNumber": 30,
+  "houseNumberAddition": "",
+  "postcode": "2012ES",
+  "city": "Haarlem",
+  "cityShort": "Haarlem",
+  "municipality": "Haarlem",
+  "municipalityShort": "Haarlem",
+  "province": "Noord-Holland",
+  "rdX": 103242,
+  "rdY": 487716,
+  "latitude": 52.37487801,
+  "longitude": 4.62714526,
+  "bagNumberDesignationId": "0392200000029398",
+  "bagAddressableObjectId": "0392010000029398",
+  "addressType": "building",
+  "purposes": [
+    "office"
+  ],
+  "surfaceArea": 643,
+  "houseNumberAdditions": [
+    ""
+  ]
+}

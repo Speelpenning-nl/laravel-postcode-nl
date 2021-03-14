@@ -1,6 +1,12 @@
 <?php
 
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\Psr7\Response;
+use Illuminate\Support\Arr;
 use Illuminate\Validation\ValidationException;
+use Speelpenning\PostcodeNl\Address;
 use Speelpenning\PostcodeNl\Exceptions\AccountSuspended;
 use Speelpenning\PostcodeNl\Exceptions\AddressNotFound;
 use Speelpenning\PostcodeNl\Exceptions\Unauthorized;
@@ -8,63 +14,82 @@ use Speelpenning\PostcodeNl\Services\AddressLookup;
 
 class AddressLookupTest extends TestCase
 {
-    public function testCredentialsAreSet()
+    public function testCredentialsAreSet(): void
     {
         $auth = config('postcode-nl.requestOptions.auth');
 
-        $this->assertNotEmpty(array_get($auth, 0));
-        $this->assertNotEmpty(array_get($auth, 1));
+        self::assertNotEmpty(Arr::get($auth, 0));
+        self::assertNotEmpty(Arr::get($auth, 1));
     }
 
-    public function testInvalidCredentialsThrowUnauthorized()
+    public function testInvalidCredentialsThrowUnauthorized(): void
     {
         $this->expectException(Unauthorized::class);
 
-        config([
-            'postcode-nl.requestOptions.auth' => [
-                'invalid', 'credentials'
-            ]
-        ]);
+        $client = $this->getMockBuilder(Client::class)
+            ->disableOriginalConstructor()
+            ->setMethods(['get'])
+            ->getMock();
+        $client->expects(self::once())
+            ->method('get')
+            ->willThrowException(new ClientException('Unauthorized', new Request('GET', '/'), new Response(401)));
+        app()->instance(Client::class, $client);
 
-        $lookup = app(AddressLookup::class);
-        $lookup->lookup('1000AA', 1);
+        app(AddressLookup::class)->lookup('1000AA', 1);
     }
 
-    public function testSuspendedCredentialsThrowAccountSuspended()
+    public function testSuspendedCredentialsThrowAccountSuspended(): void
     {
         $this->expectException(AccountSuspended::class);
 
-        config([
-            'postcode-nl.requestOptions.auth' => [
-                'H2E4y1m7elD6gt73vTCjw9tWwayV8eUHrpBv1XpOfTw', 'LNW0bPOWn0qHc2iSDDv8NifUQlucgfehFcSHyix0kyt'
-            ]
-        ]);
+        $client = $this->getMockBuilder(Client::class)
+            ->disableOriginalConstructor()
+            ->setMethods(['get'])
+            ->getMock();
+        $client->expects(self::once())
+            ->method('get')
+            ->willThrowException(new ClientException('Unauthorized', new Request('GET', '/'), new Response(403)));
+        app()->instance(Client::class, $client);
 
-        $lookup = app(AddressLookup::class);
-        $lookup->lookup('1000AA', 1);
+        app(AddressLookup::class)->lookup('1000AA', 1);
     }
 
-    public function testExistingAddressReturnsAnAddress()
+    public function testExistingAddressReturnsAnAddress(): void
     {
-        $lookup = app(AddressLookup::class);
-        $address = $lookup->lookup('1000AA', 1);
+        $client = $this->getMockBuilder(Client::class)
+            ->disableOriginalConstructor()
+            ->setMethods(['get'])
+            ->getMock();
+        $client->expects(self::once())
+            ->method('get')
+            ->willReturn(new Response(200, [], file_get_contents(__DIR__.'/nl-response.json')));
+        app()->instance(Client::class, $client);
 
-        $this->assertInstanceOf(Speelpenning\PostcodeNl\Address::class, $address);
+        $address = app(AddressLookup::class)->lookup('2012ES', 30);
+
+        self::assertInstanceOf(Address::class, $address);
     }
 
-    public function testNonExistingAddressThrowsAddressNotFound()
+    public function testNonExistingAddressThrowsAddressNotFound(): void
     {
         $this->expectException(AddressNotFound::class);
 
-        $lookup = app(AddressLookup::class);
-        $lookup->lookup('9999ZZ', 99999);
+        $client = $this->getMockBuilder(Client::class)
+            ->disableOriginalConstructor()
+            ->setMethods(['get'])
+            ->getMock();
+        $client->expects(self::once())
+            ->method('get')
+            ->willThrowException(new ClientException('Unauthorized', new Request('GET', '/'), new Response(404)));
+        app()->instance(Client::class, $client);
+
+        app(AddressLookup::class)->lookup('9999ZZ', 99999);
     }
 
-    public function testInvalidLookupThrowsValidationException()
+    public function testInvalidLookupThrowsValidationException(): void
     {
         $this->expectException(ValidationException::class);
 
-        $lookup = app(AddressLookup::class);
-        $lookup->lookup('invalid', 12345);
+        app(AddressLookup::class)->lookup('invalid', 12345);
     }
 }
