@@ -4,6 +4,7 @@ namespace Speelpenning\PostcodeNl\Services;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Validation\ValidationException;
+use JsonException;
 use Speelpenning\PostcodeNl\Address;
 use Speelpenning\PostcodeNl\Exceptions\AccountSuspended;
 use Speelpenning\PostcodeNl\Exceptions\AddressNotFound;
@@ -52,6 +53,7 @@ class AddressLookup
      * @throws AccountSuspended
      * @throws AddressNotFound
      * @throws GuzzleException
+     * @throws JsonException
      * @throws Unauthorized
      */
     public function lookup(string $postcode, int $houseNumber, string $houseNumberAddition = null): Address
@@ -60,7 +62,7 @@ class AddressLookup
 
         $uri = $this->getUri($postcode, $houseNumber, $houseNumberAddition);
         $response = $this->client->get($uri);
-        $data = json_decode($response->getBody()->getContents(), true);
+        $data = json_decode($response->getBody()->getContents(), true, 512, JSON_THROW_ON_ERROR);
         return new Address($data);
     }
 
