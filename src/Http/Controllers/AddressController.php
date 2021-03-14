@@ -6,6 +6,7 @@ use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 use Illuminate\Validation\ValidationException;
+use JsonException;
 use Speelpenning\PostcodeNl\Exceptions\AccountSuspended;
 use Speelpenning\PostcodeNl\Exceptions\AddressNotFound;
 use Speelpenning\PostcodeNl\Exceptions\Unauthorized;
@@ -37,8 +38,9 @@ class AddressController extends Controller
      * @param string $postcode
      * @param int|string $houseNumber
      * @param null|string $houseNumberAddition
-     * @throws GuzzleException
      * @return JsonResponse
+     * @throws GuzzleException
+     * @throws JsonException
      */
     public function get(string $postcode, string $houseNumber, string $houseNumberAddition = null): JsonResponse
     {

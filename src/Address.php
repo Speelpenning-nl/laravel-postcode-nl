@@ -34,6 +34,8 @@ use function json_encode;
  * @property string[] $purposes
  * @property int $surfaceArea
  * @property string[] $houseNumberAdditions
+ *
+ * @method void __set(string $key, $value);
  */
 class Address implements Arrayable, Jsonable
 {
