@@ -18,7 +18,7 @@ class PostcodeNlServiceProvider extends ServiceProvider
     /**
      * Bootstrap the application services.
      */
-    public function boot()
+    public function boot(): void
     {
         $this->publishes([
             $this->getPathToConfigFile() => config_path('postcode-nl.php')
@@ -32,7 +32,7 @@ class PostcodeNlServiceProvider extends ServiceProvider
     /**
      * Register the application services.
      */
-    public function register()
+    public function register(): void
     {
         $this->mergeConfigFrom($this->getPathToConfigFile(), 'postcode-nl');
 

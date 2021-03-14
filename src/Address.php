@@ -10,8 +10,6 @@ use Illuminate\Contracts\Support\Jsonable;
  *
  * This model contains the address details as provided by Postcode.nl. For a list of available properties and their
  * meaning, see https://api.postcode.nl/documentation/address-api#return
- *
- * @package Speelpenning\PostcodeNl
  */
 class Address implements Arrayable, Jsonable
 {
@@ -36,7 +34,7 @@ class Address implements Arrayable, Jsonable
      * @param string $key
      * @return mixed
      */
-    public function __get($key)
+    public function __get(string $key)
     {
         return array_get($this->attributes, $key);
     }

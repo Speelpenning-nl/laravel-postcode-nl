@@ -3,8 +3,8 @@
 namespace Speelpenning\PostcodeNl\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
-use Illuminate\Validation\ValidationException;
 use Illuminate\Routing\Controller;
+use Illuminate\Validation\ValidationException;
 use Speelpenning\PostcodeNl\Exceptions\AccountSuspended;
 use Speelpenning\PostcodeNl\Exceptions\AddressNotFound;
 use Speelpenning\PostcodeNl\Exceptions\Unauthorized;
