@@ -5,6 +5,7 @@ namespace Speelpenning\PostcodeNl;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Support\Arr;
+use JsonException;
 use function json_encode;
 
 /**
@@ -77,9 +78,10 @@ class Address implements Arrayable, Jsonable
      *
      * @param int $options
      * @return string
+     * @throws JsonException
      */
     public function toJson($options = 0): string
     {
-        return json_encode($this->toArray(), $options);
+        return json_encode($this->toArray(), JSON_THROW_ON_ERROR | $options);
     }
 }
