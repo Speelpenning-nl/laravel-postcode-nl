@@ -32,8 +32,6 @@ abstract class TestCase extends LaravelTestCase
 
     private function configure(): void
     {
-        ini_set('xdebug.mode', 'coverage');
-
         config([
             'postcode-nl' => [
                 'requestOptions' => [
