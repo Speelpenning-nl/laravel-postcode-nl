@@ -9,18 +9,19 @@
         }
     ],
     "require": {
-        "php": "^7.2.5|^7.3|^7.4",
+        "php": "^7.2.5",
         "ext-json": "*",
-        "guzzlehttp/guzzle": "~6.0",
-        "illuminate/config": "5.8.*",
-        "illuminate/contracts": "5.8.*",
-        "illuminate/routing": "5.8.*",
-        "illuminate/support": "5.8.*",
-        "illuminate/validation": "5.8.*"
+        "guzzlehttp/guzzle": "^7.2",
+        "illuminate/config": "6.*",
+        "illuminate/contracts": "6.*",
+        "illuminate/routing": "6.*",
+        "illuminate/support": "6.*",
+        "illuminate/validation": "6.*"
     },
     "require-dev": {
-        "laravel/laravel": "5.8.*",
-        "phpunit/phpunit": "~7.0"
+        "laravel/laravel": "6.*",
+        "phpunit/phpunit": "^8.5.8",
+        "roave/security-advisories": "dev-master"
     },
     "autoload": {
         "psr-4": {

@@ -23,7 +23,7 @@ class AddressTest extends TestCase
         ];
 
         $address = new Address($attributes);
-        self::assertArraySubset($attributes, $address->toArray());
+        self::assertEquals($attributes, $address->toArray());
     }
     public function testAddressCanBeConvertedToJson(): void
     {

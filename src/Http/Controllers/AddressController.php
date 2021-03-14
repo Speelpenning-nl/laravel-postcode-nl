@@ -9,6 +9,9 @@ use Speelpenning\PostcodeNl\Exceptions\AccountSuspended;
 use Speelpenning\PostcodeNl\Exceptions\AddressNotFound;
 use Speelpenning\PostcodeNl\Exceptions\Unauthorized;
 use Speelpenning\PostcodeNl\Services\AddressLookup;
+use function abort;
+use function response;
+use function str_replace;
 
 class AddressController extends Controller
 {

@@ -3,10 +3,12 @@
 namespace Speelpenning\PostcodeNl;
 
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
 use Speelpenning\PostcodeNl\Http\PostcodeNlClient;
 use Speelpenning\PostcodeNl\Services\AddressLookup;
 use Speelpenning\PostcodeNl\Validators\AddressLookupValidator;
+use function config_path;
 
 /**
  * Class PostcodeNlServiceProvider
@@ -24,7 +26,7 @@ class PostcodeNlServiceProvider extends ServiceProvider
             $this->getPathToConfigFile() => config_path('postcode-nl.php')
         ], 'config');
 
-        if (array_get($this->app['config'], 'postcode-nl.enableRoutes', false) and ! $this->app->routesAreCached()) {
+        if (Arr::get($this->app['config'], 'postcode-nl.enableRoutes', false) and ! $this->app->routesAreCached()) {
             require __DIR__ . '/Http/routes.php';
         }
     }
@@ -36,7 +38,7 @@ class PostcodeNlServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom($this->getPathToConfigFile(), 'postcode-nl');
 
-        $this->app->singleton(AddressLookup::class, function ($app) {
+        $this->app->singleton(AddressLookup::class, static function ($app) {
             return new AddressLookup($app[AddressLookupValidator::class], $app[PostcodeNlClient::class]);
         });
     }

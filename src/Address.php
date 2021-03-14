@@ -4,6 +4,8 @@ namespace Speelpenning\PostcodeNl;
 
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
+use Illuminate\Support\Arr;
+use function json_encode;
 
 /**
  * Class Address
@@ -57,7 +59,7 @@ class Address implements Arrayable, Jsonable
      */
     public function __get(string $key)
     {
-        return array_get($this->attributes, $key);
+        return Arr::get($this->attributes, $key);
     }
 
     /**

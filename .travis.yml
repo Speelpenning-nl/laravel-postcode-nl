@@ -5,7 +5,7 @@ php:
   - 7.4
 
 before_script:
-  - composer require --dev "laravel/laravel=5.8.x"
+  - composer require --dev "laravel/laravel=6.x"
   - composer install --dev --prefer-source --no-interaction
 
 script: vendor/bin/phpunit
