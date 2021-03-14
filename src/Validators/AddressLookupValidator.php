@@ -8,19 +8,16 @@ use Illuminate\Validation\ValidationException;
 
 class AddressLookupValidator
 {
-    /**
-     * @var Factory
-     */
-    protected $validator;
-
-    /**
-     * @var array
-     */
-    protected $rules = [
+    protected const RULES = [
         'postcode' => ['required', 'regex:/^[1-9]{1}[0-9]{3}[A-Z]{2}$/'],
         'houseNumber' => ['required', 'integer', 'between:0,99999'],
         'houseNumberAddition' => ['sometimes', 'string']
     ];
+
+    /**
+     * @var Factory
+     */
+    protected $validator;
 
     /**
      * AddressLookupValidator constructor.
@@ -40,7 +37,7 @@ class AddressLookupValidator
      */
     public function validate(array $data = []): void
     {
-        $validation = $this->validator->make($data, $this->rules);
+        $validation = $this->validator->make($data, self::RULES);
 
         if ($validation->fails()) {
             throw new ValidationException($validation, new JsonResponse($validation->errors()));

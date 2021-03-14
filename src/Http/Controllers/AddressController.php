@@ -2,6 +2,7 @@
 
 namespace Speelpenning\PostcodeNl\Http\Controllers;
 
+use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 use Illuminate\Validation\ValidationException;
@@ -21,7 +22,7 @@ class AddressController extends Controller
     protected $lookup;
 
     /**
-     * AddressController constructor.
+     * Create a new controller instance.
      *
      * @param AddressLookup $lookup
      */
@@ -36,6 +37,7 @@ class AddressController extends Controller
      * @param string $postcode
      * @param int|string $houseNumber
      * @param null|string $houseNumberAddition
+     * @throws GuzzleException
      * @return JsonResponse
      */
     public function get(string $postcode, string $houseNumber, string $houseNumberAddition = null): JsonResponse

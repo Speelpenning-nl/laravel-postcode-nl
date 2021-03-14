@@ -4,6 +4,7 @@ namespace Speelpenning\PostcodeNl\Http;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Config\Repository;
 use Psr\Http\Message\ResponseInterface;
 use Speelpenning\PostcodeNl\Exceptions\AccountSuspended;
@@ -23,7 +24,7 @@ class PostcodeNlClient
     protected $client;
 
     /**
-     * Client constructor.
+     * Create a new client instance.
      *
      * @param Repository $config
      * @param Client $client
@@ -41,6 +42,7 @@ class PostcodeNlClient
      * @return ResponseInterface
      * @throws AccountSuspended
      * @throws AddressNotFound
+     * @throws GuzzleException
      * @throws Unauthorized
      */
     public function get(string $uri): ResponseInterface

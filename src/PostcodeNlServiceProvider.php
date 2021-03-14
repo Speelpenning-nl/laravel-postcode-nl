@@ -26,7 +26,7 @@ class PostcodeNlServiceProvider extends ServiceProvider
             $this->getPathToConfigFile() => config_path('postcode-nl.php')
         ], 'config');
 
-        if (Arr::get($this->app['config'], 'postcode-nl.enableRoutes', false) and ! $this->app->routesAreCached()) {
+        if (Arr::get($this->app['config'], 'postcode-nl.enableRoutes', false) && !$this->app->routesAreCached()) {
             require __DIR__ . '/Http/routes.php';
         }
     }

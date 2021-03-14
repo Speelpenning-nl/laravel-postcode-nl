@@ -2,6 +2,7 @@
 
 namespace Speelpenning\PostcodeNl\Services;
 
+use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Validation\ValidationException;
 use Speelpenning\PostcodeNl\Address;
 use Speelpenning\PostcodeNl\Exceptions\AccountSuspended;
@@ -9,9 +10,15 @@ use Speelpenning\PostcodeNl\Exceptions\AddressNotFound;
 use Speelpenning\PostcodeNl\Exceptions\Unauthorized;
 use Speelpenning\PostcodeNl\Http\PostcodeNlClient;
 use Speelpenning\PostcodeNl\Validators\AddressLookupValidator;
+use function array_filter;
+use function compact;
+use function json_decode;
+use function sprintf;
 
 class AddressLookup
 {
+    private const BASE_URI = 'https://api.postcode.nl/rest/addresses';
+
     /**
      * @var AddressLookupValidator
      */
@@ -23,7 +30,7 @@ class AddressLookup
     protected $client;
 
     /**
-     * AddressLookup constructor.
+     * Create a new service instance.
      *
      * @param AddressLookupValidator $validator
      * @param PostcodeNlClient $client
@@ -44,6 +51,7 @@ class AddressLookup
      * @throws ValidationException
      * @throws AccountSuspended
      * @throws AddressNotFound
+     * @throws GuzzleException
      * @throws Unauthorized
      */
     public function lookup(string $postcode, int $houseNumber, string $houseNumberAddition = null): Address
@@ -66,6 +74,6 @@ class AddressLookup
      */
     public function getUri(string $postcode, int $houseNumber, string $houseNumberAddition = null): string
     {
-        return "https://api.postcode.nl/rest/addresses/$postcode/$houseNumber/$houseNumberAddition";
+        return sprintf('%s/%s/%d/%s', self::BASE_URI, $postcode, $houseNumber, $houseNumberAddition);
     }
 }
