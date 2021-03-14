@@ -9,7 +9,28 @@ use Illuminate\Contracts\Support\Jsonable;
  * Class Address
  *
  * This model contains the address details as provided by Postcode.nl. For a list of available properties and their
- * meaning, see https://api.postcode.nl/documentation/address-api#return
+ * meaning, see https://api.postcode.nl/documentation/address-api#return.
+ *
+ * @property string $street
+ * @property string $streetNen
+ * @property int $houseNumber
+ * @property string $houseNumberAddition
+ * @property string $postcode
+ * @property string $city
+ * @property string $cityShort
+ * @property string $municipality
+ * @property string $municipalityShort
+ * @property string $province
+ * @property int $rdX
+ * @property int $rdY
+ * @property float $latitude
+ * @property float $longitude
+ * @property string $bagNumberDesignationId
+ * @property string $bagAddressableObjectId
+ * @property string $addressType
+ * @property string[] $purposes
+ * @property int $surfaceArea
+ * @property string[] $houseNumberAdditions
  */
 class Address implements Arrayable, Jsonable
 {
