@@ -2,28 +2,27 @@ version: '3'
 services:
 
   composer:
-    image: composer:latest
+    image: composer:2
     volumes:
       - .:/var/www
     working_dir: /var/www
-    command: update
-
-  php-7.1:
-    image: php:7.1-cli
-    volumes:
-      - .:/var/www
-    working_dir: /var/www
-    command: vendor/bin/phpunit
 
   php-7.2:
-    image: php:7.2-cli
+    image: php:7.2-cli-alpine
     volumes:
       - .:/var/www
     working_dir: /var/www
     command: vendor/bin/phpunit
 
   php-7.3:
-    image: php:7.3-rc-cli
+    image: php:7.3-cli-alpine
+    volumes:
+      - .:/var/www
+    working_dir: /var/www
+    command: vendor/bin/phpunit
+
+  php-7.4:
+    image: php:7.4-cli-alpine
     volumes:
       - .:/var/www
     working_dir: /var/www
