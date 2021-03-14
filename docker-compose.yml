@@ -7,13 +7,6 @@ services:
       - .:/var/www
     working_dir: /var/www
 
-  php-7.2:
-    image: php:7.2-cli-alpine
-    volumes:
-      - .:/var/www
-    working_dir: /var/www
-    command: vendor/bin/phpunit
-
   php-7.3:
     image: php:7.3-cli-alpine
     volumes:
