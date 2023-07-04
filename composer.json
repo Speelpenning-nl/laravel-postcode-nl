@@ -1,5 +1,5 @@
 {
-    "name": "speelpenning/laravel-postcode-nl",
+    "name": "blacksheepz-media/laravel-postcode-nl",
     "description": "A Laravel client using the Postcode.nl REST API for Dutch address verification.",
     "license": "MIT",
     "authors": [
