@@ -11,7 +11,7 @@
     "require": {
         "php": "^7.2.5|^8.0",
         "ext-json": "*",
-        "guzzlehttp/guzzle": "^7.2",
+        "guzzlehttp/guzzle": "^6.5",
         "illuminate/config": "6.*",
         "illuminate/contracts": "6.*",
         "illuminate/routing": "6.*",
