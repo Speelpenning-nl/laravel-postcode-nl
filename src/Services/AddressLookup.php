@@ -18,7 +18,7 @@ use function sprintf;
 
 class AddressLookup
 {
-    private const BASE_URI = 'https://api.postcode.nl/rest/addresses';
+    private const BASE_URI = 'https://api.postcode.eu/nl/v1/addresses';
 
     /**
      * @var AddressLookupValidator
