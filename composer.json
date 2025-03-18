@@ -12,15 +12,15 @@
         "php": "^7.3|^8.0",
         "ext-json": "*",
         "guzzlehttp/guzzle": "^7.2",
-        "illuminate/config": "9.*",
-        "illuminate/contracts": "9.*",
-        "illuminate/routing": "9.*",
-        "illuminate/support": "9.*",
-        "illuminate/validation": "9.*"
+        "illuminate/config": "9.*|10.*|11.*|12.*",
+        "illuminate/contracts": "9.*|10.*|11.*|12.*",
+        "illuminate/routing": "9.*|10.*|11.*|12.*",
+        "illuminate/support": "9.*|10.*|11.*|12.*",
+        "illuminate/validation": "9.*|10.*|11.*|12.*"
     },
     "require-dev": {
-        "laravel/laravel": "9.*",
-        "phpunit/phpunit": "^9.5.20",
+        "laravel/laravel": "9.*|10.*|11.*|12.*",
+        "phpunit/phpunit": "^9.5.20|^10.5.45|^11.5.3",
         "roave/security-advisories": "dev-master"
     },
     "autoload": {
