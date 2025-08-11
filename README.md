@@ -1,11 +1,12 @@
 # Postcode.eu client for Laravel 11 & 12
 
-![Packagist Version](https://img.shields.io/packagist/v/speelpenning/laravel-postcode-nl)
-![Packagist License](https://img.shields.io/packagist/l/speelpenning/laravel-postcode-nl)
+![Build Status](https://github.com/Speelpenning-nl/laravel-postcode-nl/actions/workflows/tests.yml/badge.svg)
+![Latest stable Version](https://img.shields.io/packagist/v/speelpenning/laravel-postcode-nl)
+![License](https://img.shields.io/packagist/l/speelpenning/laravel-postcode-nl)
 
 A client using the Postcode.eu REST API for Dutch address verification.
 
-## Installation 
+## Installation
 
 Pull the package in through Composer:
 
