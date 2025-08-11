@@ -1,43 +1,45 @@
 {
-    "name": "speelpenning/laravel-postcode-nl",
-    "description": "A Laravel client using the Postcode.nl REST API for Dutch address verification.",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Gerben Speelpenning",
-            "email": "gerben@speelpenning.nl"
-        }
-    ],
-    "require": {
-        "php": "^7.3|^8.0",
-        "ext-json": "*",
-        "guzzlehttp/guzzle": "^7.2",
-        "illuminate/config": "9.*",
-        "illuminate/contracts": "9.*",
-        "illuminate/routing": "9.*",
-        "illuminate/support": "9.*",
-        "illuminate/validation": "9.*"
-    },
-    "require-dev": {
-        "laravel/laravel": "9.*",
-        "phpunit/phpunit": "^9.5.20",
-        "roave/security-advisories": "dev-master"
-    },
-    "autoload": {
-        "psr-4": {
-            "Speelpenning\\PostcodeNl\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "classmap": [
-            "tests/TestCase.php"
-        ]
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Speelpenning\\PostcodeNl\\PostcodeNlServiceProvider"
-            ]
-        }
+  "$schema": "https://getcomposer.org/schema.json",
+  "name": "speelpenning/laravel-postcode-nl",
+  "description": "A Laravel client using the Postcode.nl REST API for Dutch address verification.",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Gerben Speelpenning",
+      "email": "gerben@speelpenning.nl"
     }
+  ],
+  "require": {
+    "php": "^8.2",
+    "ext-json": "*",
+    "guzzlehttp/guzzle": "^7.9",
+    "illuminate/config": "11.*|12.*",
+    "illuminate/contracts": "11.*|12.*",
+    "illuminate/routing": "11.*|12.*",
+    "illuminate/support": "11.*|12.*",
+    "illuminate/validation": "11.*|12.*"
+  },
+  "require-dev": {
+    "laravel/laravel": "11.*|12.*",
+    "phpunit/phpunit": "^11.0.1",
+    "roave/security-advisories": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "Speelpenning\\PostcodeNl\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "classmap": [
+      "tests/TestCase.php"
+    ]
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Speelpenning\\PostcodeNl\\PostcodeNlServiceProvider"
+      ]
+    }
+  }
 }

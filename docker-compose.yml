@@ -1,4 +1,5 @@
-version: '3'
+name:  laravel-postcode-nl
+
 services:
 
   composer:
@@ -7,22 +8,22 @@ services:
       - .:/var/www
     working_dir: /var/www
 
-  php-7.3:
-    image: php:7.3-cli-alpine
+  php-8.2:
+    image: php:8.2-cli-alpine
     volumes:
       - .:/var/www
     working_dir: /var/www
     command: vendor/bin/phpunit
 
-  php-7.4:
-    image: php:7.4-cli-alpine
+  php-8.3:
+    image: php:8.3-cli-alpine
     volumes:
       - .:/var/www
     working_dir: /var/www
     command: vendor/bin/phpunit
 
-  php-8.0:
-    image: php:8.0-cli-alpine
+  php-8.4:
+    image: php:8.4-cli-alpine
     volumes:
       - .:/var/www
     working_dir: /var/www
