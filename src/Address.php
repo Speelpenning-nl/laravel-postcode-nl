@@ -11,7 +11,7 @@ use function json_encode;
 /**
  * Class Address
  *
- * This model contains the address details as provided by Postcode.nl. For a list of available properties and their
+ * This model contains the address details as provided by Postcode.eu. For a list of available properties and their
  * meaning, see https://developer.postcode.eu/documentation/nl/v1/Address/viewByPostcode.
  *
  * @property string $street

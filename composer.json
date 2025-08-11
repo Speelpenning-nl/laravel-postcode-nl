@@ -1,7 +1,7 @@
 {
   "$schema": "https://getcomposer.org/schema.json",
   "name": "speelpenning/laravel-postcode-nl",
-  "description": "A Laravel client using the Postcode.nl REST API for Dutch address verification.",
+  "description": "A Laravel client using the Postcode.eu REST API for Dutch address verification.",
   "type": "library",
   "license": "MIT",
   "authors": [

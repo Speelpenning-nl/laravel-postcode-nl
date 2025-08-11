@@ -1,9 +1,9 @@
-# Postcode.nl client for Laravel 8
+# Postcode.eu client for Laravel 11 & 12
 
-[![Build Status](https://travis-ci.org/Speelpenning-nl/laravel-postcode-nl.svg)](https://travis-ci.org/Speelpenning-nl/laravel-postcode-nl)
-[![License](https://poser.pugx.org/speelpenning/laravel-postcode-nl/license)](https://packagist.org/packages/speelpenning/laravel-postcode-nl)
+![Packagist Version](https://img.shields.io/packagist/v/speelpenning/laravel-postcode-nl)
+![Packagist License](https://img.shields.io/packagist/l/speelpenning/laravel-postcode-nl)
 
-A client using the Postcode.nl REST API for Dutch address verification.
+A client using the Postcode.eu REST API for Dutch address verification.
 
 ## Installation 
 
@@ -13,8 +13,9 @@ Pull the package in through Composer:
 composer require speelpenning/laravel-postcode-nl
 ```
 
-Next, register an account with Postcode.nl to obtain a key and secret. See https://api.postcode.nl/#register for 
-further information. Once you have a key and secret, store them in your .env file.
+Next, register an account with Postcode.eu to obtain a key and secret, required to authenticate with the API. See 
+https://account.postcode.eu/register/api/en_GB for more information. Once you have a key and secret, store them 
+in your .env file.
 
 Add the following service provider to your application config:
 
@@ -75,7 +76,6 @@ class AddressDumper {
     }
 
 }
-
 ```
 
 ### Using the JSON API
@@ -98,7 +98,7 @@ or use the following URL (e.g. for AJAX calls):
 
 The key and secret are used for authentication. Without them, you cannot use the service. 
 
-```ini
+```dotenv
 POSTCODENL_KEY=<your-api-key>
 POSTCODENL_SECRET=<your-secret>
 ```
@@ -107,7 +107,7 @@ POSTCODENL_SECRET=<your-secret>
 
 This package comes with a ready to use JSON API, which is disabled by default. You can enable it like so:  
 
-```ini
+```dotenv
 POSTCODENL_ENABLE_ROUTES=true
 ```
 
@@ -115,6 +115,6 @@ POSTCODENL_ENABLE_ROUTES=true
 
 By default, the client waits 10 seconds for a response. You may set a different timeout.
 
-```ini
+```dotenv
 POSTCODENL_TIMEOUT=<timeout-in-seconds>
 ```

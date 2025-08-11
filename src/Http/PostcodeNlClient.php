@@ -30,7 +30,7 @@ class PostcodeNlClient
     }
 
     /**
-     * Performs a GET request compatible with Postcode.nl.
+     * Performs a GET request compatible with Postcode.eu.
      *
      * @param string $uri
      * @return ResponseInterface
