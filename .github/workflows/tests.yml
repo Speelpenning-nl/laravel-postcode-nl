@@ -35,7 +35,7 @@ jobs:
           coverage: none
 
       - name: Require Laravel
-        run: composer require "laravel/laravel:${{ matrix.laravel }}"
+        run: composer require "laravel/laravel:${{ matrix.laravel }}" --dev
 
       - name: Install dependencies
         run: composer install --prefer-dist --no-interaction --no-progress
