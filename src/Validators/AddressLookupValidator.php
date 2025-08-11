@@ -9,7 +9,7 @@ use Illuminate\Validation\ValidationException;
 class AddressLookupValidator
 {
     protected const RULES = [
-        'postcode' => ['required', 'regex:/^[1-9]{1}[0-9]{3}[A-Z]{2}$/'],
+        'postcode' => ['required', 'regex:/^[1-9]{1}[0-9]{3}[A-Za-z]{2}$/'],
         'houseNumber' => ['required', 'integer', 'between:0,99999'],
         'houseNumberAddition' => ['sometimes', 'string']
     ];
