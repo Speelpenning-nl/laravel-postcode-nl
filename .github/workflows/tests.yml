@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - '*.x'
-  pull_request:
-    branches:
-      - '*.x'
 
 permissions:
   contents: read
