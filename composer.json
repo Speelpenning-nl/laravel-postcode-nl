@@ -23,7 +23,7 @@
   },
   "require-dev": {
     "laravel/laravel": "11.*|12.*",
-    "phpunit/phpunit": "^11.0.1",
+    "phpunit/phpunit": "^11.5.3",
     "roave/security-advisories": "dev-master"
   },
   "autoload": {
