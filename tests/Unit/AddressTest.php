@@ -1,6 +1,9 @@
 <?php
 
+namespace Unit;
+
 use Speelpenning\PostcodeNl\Address;
+use TestCase;
 
 class AddressTest extends TestCase
 {

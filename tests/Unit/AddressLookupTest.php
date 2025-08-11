@@ -1,5 +1,7 @@
 <?php
 
+namespace Unit;
+
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Psr7\Request;
@@ -11,6 +13,7 @@ use Speelpenning\PostcodeNl\Exceptions\AccountSuspended;
 use Speelpenning\PostcodeNl\Exceptions\AddressNotFound;
 use Speelpenning\PostcodeNl\Exceptions\Unauthorized;
 use Speelpenning\PostcodeNl\Services\AddressLookup;
+use TestCase;
 
 class AddressLookupTest extends TestCase
 {
@@ -62,7 +65,7 @@ class AddressLookupTest extends TestCase
             ->getMock();
         $client->expects(self::once())
             ->method('get')
-            ->willReturn(new Response(200, [], file_get_contents(__DIR__.'/nl-response.json')));
+            ->willReturn(new Response(200, [], file_get_contents(__DIR__ . '/../nl-response.json')));
         app()->instance(Client::class, $client);
 
         $address = app(AddressLookup::class)->lookup('2012ES', 30);

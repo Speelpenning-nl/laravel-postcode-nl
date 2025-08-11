@@ -1,12 +1,19 @@
 <?php
 
+namespace Feature;
+
+use Illuminate\Support\MessageBag;
+use Illuminate\Translation\Translator;
+use Illuminate\Validation\Factory;
+use Illuminate\Validation\ValidationData;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Validation\Validator;
 use Speelpenning\PostcodeNl\Address;
 use Speelpenning\PostcodeNl\Exceptions\AccountSuspended;
 use Speelpenning\PostcodeNl\Exceptions\AddressNotFound;
 use Speelpenning\PostcodeNl\Exceptions\Unauthorized;
 use Speelpenning\PostcodeNl\Services\AddressLookup;
-use Speelpenning\PostcodeNl\Validators\AddressLookupValidator;
+use TestCase;
 
 class AddressControllerTest extends TestCase
 {
@@ -79,13 +86,35 @@ class AddressControllerTest extends TestCase
 
     public function testInvalidLookupThrowsValidationException(): void
     {
+        $translator = $this->getMockBuilder(Translator::class)
+            ->disableOriginalConstructor()
+            ->onlyMethods(['get'])
+            ->getMock();
+
+        $validation = $this->getMockBuilder(Validator::class)
+            ->disableOriginalConstructor()
+            ->onlyMethods(['errors', 'fails', 'getTranslator'])
+            ->getMock();
+        $validation->method('errors')
+            ->willReturn(new MessageBag());
+        $validation->method('fails')
+            ->willReturn(true);
+        $validation->method('getTranslator')
+            ->willReturn($translator);
+        $validator = $this->getMockBuilder(Factory::class)
+            ->disableOriginalConstructor()
+            ->onlyMethods(['make'])
+            ->getMock();
+        $validator->method('make')
+            ->willReturn($validation);
+
         $service = $this->getMockBuilder(AddressLookup::class)
             ->disableOriginalConstructor()
             ->onlyMethods(['lookup'])
             ->getMock();
         $service->expects(self::once())
             ->method('lookup')
-            ->willThrowException(new ValidationException(app(AddressLookupValidator::class)));
+            ->willThrowException(new ValidationException($validation));
         app()->instance(AddressLookup::class, $service);
 
         $this->get(route('postcode-nl::address', ['invalid', 'address']))
