@@ -1,6 +1,6 @@
 <?php
 
-namespace Feature;
+namespace Tests\Feature;
 
 use Illuminate\Support\MessageBag;
 use Illuminate\Translation\Translator;
@@ -12,7 +12,7 @@ use Speelpenning\PostcodeNl\Exceptions\AccountSuspended;
 use Speelpenning\PostcodeNl\Exceptions\AddressNotFound;
 use Speelpenning\PostcodeNl\Exceptions\Unauthorized;
 use Speelpenning\PostcodeNl\Services\AddressLookup;
-use TestCase;
+use Tests\TestCase;
 
 class AddressControllerTest extends TestCase
 {

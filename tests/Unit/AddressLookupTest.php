@@ -1,6 +1,6 @@
 <?php
 
-namespace Unit;
+namespace Tests\Unit;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
@@ -13,7 +13,7 @@ use Speelpenning\PostcodeNl\Exceptions\AccountSuspended;
 use Speelpenning\PostcodeNl\Exceptions\AddressNotFound;
 use Speelpenning\PostcodeNl\Exceptions\Unauthorized;
 use Speelpenning\PostcodeNl\Services\AddressLookup;
-use TestCase;
+use Tests\TestCase;
 
 class AddressLookupTest extends TestCase
 {

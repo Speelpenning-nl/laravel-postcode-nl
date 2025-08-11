@@ -2,6 +2,7 @@
   "$schema": "https://getcomposer.org/schema.json",
   "name": "speelpenning/laravel-postcode-nl",
   "description": "A Laravel client using the Postcode.eu REST API for Dutch address verification.",
+  "keywords": ["postcode.eu", "postcode.nl"],
   "type": "library",
   "license": "MIT",
   "authors": [
@@ -31,9 +32,9 @@
     }
   },
   "autoload-dev": {
-    "classmap": [
-      "tests/TestCase.php"
-    ]
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
   },
   "extra": {
     "laravel": {
