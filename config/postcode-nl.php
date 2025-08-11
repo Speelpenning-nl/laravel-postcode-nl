@@ -10,8 +10,8 @@ return [
         /*
          * Authentication
          *
-         * Register an account with Postcode.nl to obtain a key and secret. See https://api.postcode.nl/#register for
-         * further information.
+         * Register an account with Postcode.eu to obtain a key and secret. See
+         * https://account.postcode.eu/register/api/en_GB for more information.
          */
         'auth' => [
             env('POSTCODENL_KEY'),
