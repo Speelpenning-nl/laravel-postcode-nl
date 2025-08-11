@@ -14,10 +14,7 @@ class AddressLookupValidator
         'houseNumberAddition' => ['sometimes', 'string']
     ];
 
-    /**
-     * @var Factory
-     */
-    protected $validator;
+    protected Factory $validator;
 
     /**
      * AddressLookupValidator constructor.

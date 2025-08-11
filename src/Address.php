@@ -39,10 +39,7 @@ use function json_encode;
  */
 class Address implements Arrayable, Jsonable
 {
-    /**
-     * @var array
-     */
-    protected $attributes = [];
+    protected array $attributes = [];
 
     /**
      * Address constructor.

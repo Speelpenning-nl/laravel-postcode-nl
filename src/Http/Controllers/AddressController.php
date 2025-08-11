@@ -6,6 +6,7 @@ use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 use Illuminate\Validation\ValidationException;
+use JsonException;
 use Speelpenning\PostcodeNl\Exceptions\AccountSuspended;
 use Speelpenning\PostcodeNl\Exceptions\AddressNotFound;
 use Speelpenning\PostcodeNl\Exceptions\Unauthorized;
@@ -16,10 +17,7 @@ use function str_replace;
 
 class AddressController extends Controller
 {
-    /**
-     * @var AddressLookup
-     */
-    protected $lookup;
+    protected AddressLookup $lookup;
 
     /**
      * Create a new controller instance.
@@ -37,21 +35,22 @@ class AddressController extends Controller
      * @param string $postcode
      * @param int|string $houseNumber
      * @param null|string $houseNumberAddition
-     * @throws GuzzleException
      * @return JsonResponse
+     * @throws JsonException
+     * @throws GuzzleException
      */
-    public function get(string $postcode, string $houseNumber, string $houseNumberAddition = null): JsonResponse
+    public function get(string $postcode, int|string $houseNumber, string $houseNumberAddition = null): JsonResponse
     {
         try {
             $address = $this->lookup->lookup(str_replace(' ', '', $postcode), (int)$houseNumber, $houseNumberAddition);
             return response()->json($address);
-        } catch (ValidationException $e) {
+        } catch (ValidationException) {
             abort(400, 'Bad Request');
-        } catch (Unauthorized $e) {
+        } catch (Unauthorized) {
             abort(401, 'Unauthorized');
-        } catch (AccountSuspended $e) {
+        } catch (AccountSuspended) {
             abort(403, 'Account suspended');
-        } catch (AddressNotFound $e) {
+        } catch (AddressNotFound) {
             abort(404, 'Not Found');
         }
     }

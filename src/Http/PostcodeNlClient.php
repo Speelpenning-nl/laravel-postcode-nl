@@ -13,15 +13,9 @@ use Speelpenning\PostcodeNl\Exceptions\Unauthorized;
 
 class PostcodeNlClient
 {
-    /**
-     * @var Repository
-     */
-    protected $config;
+    protected Repository $config;
 
-    /**
-     * @var Client
-     */
-    protected $client;
+    protected Client $client;
 
     /**
      * Create a new client instance.
@@ -74,15 +68,11 @@ class PostcodeNlClient
      */
     protected function handleClientException(ClientException $e): void
     {
-        switch ($e->getCode()) {
-            case 401:
-                throw new Unauthorized();
-            case 403:
-                throw new AccountSuspended();
-            case 404:
-                throw new AddressNotFound();
-            default:
-                throw $e;
-        }
+        throw match ($e->getCode()) {
+            401 => new Unauthorized(),
+            403 => new AccountSuspended(),
+            404 => new AddressNotFound(),
+            default => $e,
+        };
     }
 }

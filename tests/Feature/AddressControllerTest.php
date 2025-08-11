@@ -5,7 +5,6 @@ namespace Feature;
 use Illuminate\Support\MessageBag;
 use Illuminate\Translation\Translator;
 use Illuminate\Validation\Factory;
-use Illuminate\Validation\ValidationData;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Validation\Validator;
 use Speelpenning\PostcodeNl\Address;

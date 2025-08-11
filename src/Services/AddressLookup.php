@@ -20,15 +20,9 @@ class AddressLookup
 {
     private const BASE_URI = 'https://api.postcode.nl/rest/addresses';
 
-    /**
-     * @var AddressLookupValidator
-     */
-    protected $validator;
+    protected AddressLookupValidator $validator;
 
-    /**
-     * @var PostcodeNlClient
-     */
-    protected $client;
+    protected PostcodeNlClient $client;
 
     /**
      * Create a new service instance.
