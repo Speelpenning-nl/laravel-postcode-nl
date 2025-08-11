@@ -2,8 +2,7 @@
 
 namespace Speelpenning\PostcodeNl\Exceptions;
 
-use Exception;
-
-class AccountSuspended extends Exception
+class AccountSuspended extends PostcodeNlException
 {
+    //
 }

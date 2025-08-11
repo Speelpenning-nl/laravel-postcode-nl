@@ -2,8 +2,7 @@
 
 namespace Speelpenning\PostcodeNl\Exceptions;
 
-use Exception;
-
-class AddressNotFound extends Exception
+class AddressNotFound extends PostcodeNlException
 {
+    //
 }
