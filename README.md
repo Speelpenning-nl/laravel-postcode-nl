@@ -1,4 +1,4 @@
-# Postcode.eu client for Laravel 11 & 12
+# Postcode.eu client for Laravel 12 & 13
 
 ![Build Status](https://github.com/Speelpenning-nl/laravel-postcode-nl/actions/workflows/tests.yml/badge.svg)
 ![Latest stable Version](https://img.shields.io/packagist/v/speelpenning/laravel-postcode-nl)
